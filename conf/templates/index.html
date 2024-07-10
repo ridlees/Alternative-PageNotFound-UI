@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>PageNotFound without bs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<script src="https://unpkg.com/htmx.org@1.9.10"></script>
+
+<style>
+ label, p {
+    font-family: monospace;
+    letter-spacing: .17em;
+    overflow:hidden;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
+
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+.input{
+  border-radius: 25px;
+  border: 2px solid gray;
+  padding: 10px;
+  margin: 10px
+}
+#button:hover {background-color: #888B8D}
+#button:active {
+  background-color: #666;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+
+</head>
+<body>
+<div class="center">
+<h1> PageNotFound without bs</h1></div>
+</div>
+<form action="/sender" id="text" method="post" enctype="multipart/form-data":>
+  <label for="Message">URL: </label><br>
+  <textarea name="url" id="message" placeholder="Zadejte celou URL na odemčený článek na Pagenotfound.cz" class="input"></textarea> <br><br>
+  <button hx-post="/sender" hx-trigger="click" hx-indicator="#loading" hx-swap="afterend" hx-include="#text">Generuj</button>
+</form>
+
+</body>
+</html>
